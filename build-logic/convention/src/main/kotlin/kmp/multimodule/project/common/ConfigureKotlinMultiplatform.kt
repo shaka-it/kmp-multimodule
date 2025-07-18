@@ -18,5 +18,5 @@ internal fun Project.configureKotlinMultiplatform(
 
     androidTarget()
 
-    jvmToolchain(21)
+    jvmToolchain(17)
 }
