@@ -36,3 +36,8 @@ plugins {
 }
 
 include(":composeApp")
+include(":common:auth:api")
+include(":common:auth:impl")
+include(":common:pets:api")
+include(":common:pets:impl")
+include(":common:core")
