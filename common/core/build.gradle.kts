@@ -1,5 +1,17 @@
 plugins {
     alias(libs.plugins.moduleSetup)
+    alias(libs.plugins.serialization)
+    alias(libs.plugins.sqldelight)
+}
+
+sqldelight {
+    databases {
+        create("Database") {
+            packageName.set("kmp.multimodule.project")
+            generateAsync.set(true)
+        }
+    }
+    linkSqlite = true
 }
 
 kotlin {
@@ -19,17 +31,17 @@ kotlin {
 
         androidMain.dependencies {
             implementation(libs.ktor.client.android)
-//            implementation(libs.sqldelight.android.driver)
+            implementation(libs.sqldelight.android.driver)
         }
 
         iosMain.dependencies {
             implementation(libs.ktor.client.ios)
-//            implementation(libs.sqldelight.native.driver)
+            implementation(libs.sqldelight.native.driver)
         }
 
         desktopMain.dependencies {
             implementation(libs.ktor.client.okhttp)
-//            implementation(libs.sqldelight.sqlite.driver)
+            implementation(libs.sqldelight.sqlite.driver)
         }
 
         jsMain.dependencies {

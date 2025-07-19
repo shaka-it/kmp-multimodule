@@ -5,8 +5,8 @@ plugins {
 group = "kmp.multimodule.project.buildlogic"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 dependencies {
@@ -14,7 +14,7 @@ dependencies {
     compileOnly(libs.plugin.kotlin)
     compileOnly(libs.plugin.compose)
     compileOnly(libs.plugin.serialization)
-//    compileOnly(libs.plugin.sqldelight)
+    compileOnly(libs.plugin.sqldelight)
 //    compileOnly(libs.plugin.libres)
 }
 
