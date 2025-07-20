@@ -3,5 +3,5 @@ plugins {
 }
 
 android {
-    namespace = "kmp.multimodule.project.common.pets.api"
+    namespace = "kmp.multimodule.project.common.main.api"
 }

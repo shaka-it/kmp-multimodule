@@ -4,5 +4,5 @@ plugins {
 }
 
 android {
-    namespace = "kmp.multimodule.project.common.auth.impl"
+    namespace = "kmp.multimodule.project.common.auth.compose"
 }

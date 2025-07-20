@@ -4,5 +4,5 @@ plugins {
 }
 
 android {
-    namespace = "kmp.multimodule.project.common.pets.impl"
+    namespace = "kmp.multimodule.project.common.main.compose"
 }

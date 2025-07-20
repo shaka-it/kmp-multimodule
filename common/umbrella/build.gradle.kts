@@ -7,8 +7,8 @@ kotlin {
         commonMain {
             dependencies {
                 implementation(projects.common.core)
-                implementation(projects.common.auth.impl)
-                implementation(projects.common.pets.impl)
+                implementation(projects.common.auth.data)
+                implementation(projects.common.todos.data)
             }
         }
     }
