@@ -5,7 +5,7 @@ import repository.DefaultTodosRepository
 import repository.TodosRepository
 import sqldelight.SqlDelightTodosDataSource
 
-val todoModule = module {
+val todosModule = module {
     single {
         KtorTodosDataSource(httpClient = get())
     }
