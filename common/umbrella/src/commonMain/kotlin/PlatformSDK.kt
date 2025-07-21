@@ -15,6 +15,7 @@ object PlatformSDK {
             umbrellaModule,
             coreModule,
             todosModule,
+            authModule,
         )
 
         startKoin {

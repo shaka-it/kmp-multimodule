@@ -5,3 +5,16 @@ plugins {
 android {
     namespace = "kmp.multimodule.project.common.auth.data"
 }
+
+kotlin {
+    sourceSets {
+        commonMain {
+            dependencies {
+                api(projects.common.auth.api)
+                implementation(projects.common.core)
+
+                implementation(libs.multiplatform.settings.core)
+            }
+        }
+    }
+}

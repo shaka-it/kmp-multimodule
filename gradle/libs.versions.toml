@@ -18,7 +18,7 @@ koin = "4.1.0"
 odyssey = "1.3.50"
 kviewmodel = "0.17"
 sqldelight = "2.1.0"
-settings = "1.0.0"
+settings = "1.3.0"
 coil = "2.3.0"
 androidx-appcompat = "1.7.1"
 agp = "8.11.1"
@@ -52,7 +52,9 @@ kotlinx-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core",
 sqldelight-android-driver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }
 sqldelight-native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight" }
 sqldelight-sqlite-driver = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqldelight" }
-sqldelight-js-driver = { module = "app.cash.sqldelight:web-worker-driver", version.ref = "sqldelight" }
+sqldelight-wasmjs-driver = { module = "app.cash.sqldelight:web-worker-driver-wasm-js", version.ref = "sqldelight" }
+sqldelight-wasmjs-runtime = { module = "app.cash.sqldelight:runtime-wasm-js", version.ref = "sqldelight" }
+sqldelight-wasmjs-kotlin = { module = "org.jetbrains.kotlin:kotlin-stdlib-wasm-js", version.ref = "kotlin" }
 
 multiplatform-settings-core = { module = "com.russhwolf:multiplatform-settings", version.ref = "settings" }
 multiplatform-settings-no-arg = { module = "com.russhwolf:multiplatform-settings-no-arg", version.ref = "settings" }

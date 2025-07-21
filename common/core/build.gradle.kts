@@ -26,6 +26,9 @@ kotlin {
             implementation(libs.ktor.client.negotiation)
             implementation(libs.ktor.client.logging)
 
+            implementation(libs.multiplatform.settings.core)
+            implementation(libs.multiplatform.settings.no.arg)
+
             api(libs.koin.di)
         }
 
@@ -44,10 +47,12 @@ kotlin {
             implementation(libs.sqldelight.sqlite.driver)
         }
 
-        jsMain.dependencies {
-            implementation(libs.sqldelight.js.driver)
-            implementation(npm("sql.js", "1.6.2"))
-            implementation(npm("@cashapp/sqldelight-sqljs-worker", "2.0.1"))
+        wasmJsMain.dependencies {
+            implementation(libs.sqldelight.wasmjs.runtime)
+            implementation(libs.sqldelight.wasmjs.driver)
+            implementation(libs.sqldelight.wasmjs.kotlin)
+            implementation(npm("sql.js", "1.12.0"))
+            implementation(npm("@cashapp/sqldelight-sqljs-worker", "2.1.0"))
             implementation(devNpm("copy-webpack-plugin", "9.1.0"))
         }
     }
