@@ -12,7 +12,7 @@ fun AppTheme(content: @Composable () -> Unit) {
 }
 
 object Theme {
-    val colors: TodoColors
+    val colors: GameColors
         @Composable
         get() = LocalColorProvider.current
 }

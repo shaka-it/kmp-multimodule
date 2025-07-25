@@ -30,6 +30,8 @@ kotlin {
             implementation(libs.multiplatform.settings.no.arg)
 
             api(libs.koin.di)
+
+            api(libs.bundles.navigation)
         }
 
         androidMain.dependencies {

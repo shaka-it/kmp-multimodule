@@ -8,7 +8,7 @@ kotlin {
             dependencies {
                 implementation(projects.common.core)
                 implementation(projects.common.auth.data)
-                implementation(projects.common.todos.data)
+                implementation(projects.common.posts.data)
             }
         }
     }

@@ -58,8 +58,11 @@ kotlin {
         commonMain.dependencies {
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtimeCompose)
+            implementation(libs.bundles.navigation)
             implementation(projects.common.core)
             implementation(projects.common.umbrella)
+            implementation(projects.common.root.compose)
+            implementation(projects.common.coreCompose)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

@@ -1,0 +1,93 @@
+package kmp.multimodule.project.common.auth.presentation.root
+
+import com.arkivanov.decompose.ComponentContext
+import com.arkivanov.decompose.router.stack.ChildStack
+import com.arkivanov.decompose.router.stack.StackNavigation
+import com.arkivanov.decompose.router.stack.childStack
+import com.arkivanov.decompose.router.stack.pop
+import com.arkivanov.decompose.router.stack.pushNew
+import com.arkivanov.decompose.value.Value
+import kmp.multimodule.project.common.auth.presentation.createForgotPasswordComponent
+import kmp.multimodule.project.common.auth.presentation.createLoginComponent
+import kmp.multimodule.project.common.auth.presentation.createRegisterComponent
+import kmp.multimodule.project.common.auth.presentation.forgot.ForgotPasswordComponent
+import kmp.multimodule.project.common.auth.presentation.login.LoginComponent
+import kmp.multimodule.project.common.auth.presentation.register.RegisterComponent
+import kmp.multimodule.project.common.core.component.ComponentFactory
+import kmp.multimodule.project.common.core.utils.Consumer
+import kmp.multimodule.project.common.core.utils.invoke
+import kotlinx.serialization.Serializable
+
+class RealAuthModuleComponent(
+    componentContext: ComponentContext,
+    private val onNavEvent: Consumer<AuthModuleComponent.NavEvent>,
+    private val componentFactory: ComponentFactory,
+) : AuthModuleComponent, ComponentContext by componentContext {
+
+    private val navigation = StackNavigation<Config>()
+
+    private val stack = childStack(
+        source = navigation,
+        initialConfiguration = Config.Login,
+        handleBackButton = true,
+        childFactory = ::createChild,
+        serializer = Config.serializer(),
+    )
+
+    override val childStack: Value<ChildStack<*, AuthModuleComponent.Child>> = stack
+
+    private fun createChild(
+        config: Config,
+        componentContext: ComponentContext,
+    ): AuthModuleComponent.Child =
+        when (config) {
+            Config.Login -> AuthModuleComponent.Child.Login(
+                componentFactory.createLoginComponent(
+                    componentContext = componentContext,
+                    onNavEvent = Consumer(::onLoginNavEvent),
+                )
+            )
+
+            Config.Register -> AuthModuleComponent.Child.Register(
+                componentFactory.createRegisterComponent(
+                    componentContext = componentContext,
+                    onNavEvent = Consumer(::onRegisterNavEvent),
+                )
+            )
+
+            Config.ForgotPassword -> AuthModuleComponent.Child.ForgotPassword(
+                componentFactory.createForgotPasswordComponent(
+                    componentContext = componentContext,
+                    onNavEvent = Consumer(::onForgotPasswordNavEvent),
+                )
+            )
+        }
+
+    private fun onLoginNavEvent(output: LoginComponent.NavEvent): Unit =
+        when (output) {
+            is LoginComponent.NavEvent.Passed -> onNavEvent(AuthModuleComponent.NavEvent.Passed)
+            LoginComponent.NavEvent.OpenForgotPassword -> navigation.pushNew(Config.ForgotPassword)
+            LoginComponent.NavEvent.OpenRegister -> navigation.pushNew(Config.Register)
+        }
+
+    private fun onRegisterNavEvent(output: RegisterComponent.NavEvent): Unit = when (output) {
+        is RegisterComponent.NavEvent.Passed -> onNavEvent(AuthModuleComponent.NavEvent.Passed)
+    }
+
+    private fun onForgotPasswordNavEvent(output: ForgotPasswordComponent.NavEvent): Unit =
+        when (output) {
+            is ForgotPasswordComponent.NavEvent.Finished -> navigation.pop()
+        }
+
+    @Serializable
+    private sealed interface Config {
+        @Serializable
+        object Login : Config
+
+        @Serializable
+        object Register : Config
+
+        @Serializable
+        object ForgotPassword : Config
+    }
+}

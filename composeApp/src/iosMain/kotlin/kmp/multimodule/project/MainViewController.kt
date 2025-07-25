@@ -1,9 +1,20 @@
 package kmp.multimodule.project
 
-import PlatformConfiguration
+import kmp.multimodule.project.common.core.PlatformConfiguration
 import androidx.compose.ui.window.ComposeUIViewController
+import com.arkivanov.decompose.DefaultComponentContext
+import com.arkivanov.essenty.lifecycle.ApplicationLifecycle
+import kmp.multimodule.project.common.core.component.ComponentFactory
+import kmp.multimodule.project.common.root.RootScreen
+import kmp.multimodule.project.common.root.createRootComponent
+import kmp.multimodule.project.common.umbrella.PlatformSDK
 
 fun MainViewController() = ComposeUIViewController {
     PlatformSDK.init(configuration = PlatformConfiguration())
-    App()
+
+    val componentContext = DefaultComponentContext(lifecycle = ApplicationLifecycle())
+    val componentFactory = PlatformSDK.koin.get<ComponentFactory>()
+    val rootComponent = componentFactory.createRootComponent(componentContext)
+
+    RootScreen(component = rootComponent)
 }
