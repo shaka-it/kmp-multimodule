@@ -8,6 +8,7 @@ import kmp.multimodule.project.common.core.component.ComponentFactory
 import kmp.multimodule.project.common.root.RootScreen
 import kmp.multimodule.project.common.root.createRootComponent
 import kmp.multimodule.project.common.umbrella.PlatformSDK
+import theme.AppTheme
 
 fun MainViewController() = ComposeUIViewController {
     PlatformSDK.init(configuration = PlatformConfiguration())
@@ -16,5 +17,7 @@ fun MainViewController() = ComposeUIViewController {
     val componentFactory = PlatformSDK.koin.get<ComponentFactory>()
     val rootComponent = componentFactory.createRootComponent(componentContext)
 
-    RootScreen(component = rootComponent)
+    AppTheme {
+        RootScreen(component = rootComponent)
+    }
 }

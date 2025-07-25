@@ -10,6 +10,7 @@ import kmp.multimodule.project.common.root.RootScreen
 import kmp.multimodule.project.common.root.createRootComponent
 import kmp.multimodule.project.common.umbrella.PlatformSDK
 import kotlinx.browser.document
+import theme.AppTheme
 
 @OptIn(ExperimentalComposeUiApi::class)
 fun main() {
@@ -23,6 +24,8 @@ fun main() {
         val componentFactory = PlatformSDK.koin.get<ComponentFactory>()
         val rootComponent = componentFactory.createRootComponent(componentContext)
 
-        RootScreen(component = rootComponent)
+        AppTheme {
+            RootScreen(component = rootComponent)
+        }
     }
 }

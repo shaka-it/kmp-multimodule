@@ -9,6 +9,7 @@ import kmp.multimodule.project.common.core.component.ComponentFactory
 import kmp.multimodule.project.common.root.RootScreen
 import kmp.multimodule.project.common.root.createRootComponent
 import kmp.multimodule.project.common.umbrella.PlatformSDK
+import theme.AppTheme
 
 fun main() = application {
     PlatformSDK.init(
@@ -24,6 +25,8 @@ fun main() = application {
         onCloseRequest = ::exitApplication,
         title = "kmp-multimodule-project",
     ) {
-        RootScreen(component = rootComponent)
+        AppTheme {
+            RootScreen(component = rootComponent)
+        }
     }
 }
