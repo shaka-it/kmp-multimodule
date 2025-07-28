@@ -1,17 +1,14 @@
-package kmp.multimodule.project.common.umbrella
+package kmp.multimodule.project.common.umbrella.core
 
 import authModule
 import kmp.multimodule.project.common.core.PlatformConfiguration
 import kmp.multimodule.project.common.core.coreModule
-import org.koin.core.Koin
+import kmp.multimodule.project.common.core.di.Inject
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 import postsModule
 
 object PlatformSDK {
-
-    lateinit var koin: Koin private set
-
     fun init(
         configuration: PlatformConfiguration
     ) {
@@ -20,7 +17,6 @@ object PlatformSDK {
                 configuration
             }
         }
-
         val modules = listOf(
             umbrellaModule,
             coreModule,
@@ -28,8 +24,10 @@ object PlatformSDK {
             authModule,
         )
 
-        koin = startKoin {
-            modules(modules = modules)
-        }.koin
+        Inject.init(
+            koin = startKoin {
+                modules(modules = modules)
+            }.koin,
+        )
     }
 }

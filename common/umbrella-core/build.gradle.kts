@@ -15,5 +15,5 @@ kotlin {
 }
 
 android {
-    namespace ="kmp.multimodule.project.common.umbrella"
+    namespace ="kmp.multimodule.project.common.umbrella.core"
 }

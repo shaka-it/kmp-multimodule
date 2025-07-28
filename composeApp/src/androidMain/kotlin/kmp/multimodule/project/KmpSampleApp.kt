@@ -2,7 +2,7 @@ package kmp.multimodule.project
 
 import kmp.multimodule.project.common.core.PlatformConfiguration
 import android.app.Application
-import kmp.multimodule.project.common.umbrella.PlatformSDK
+import kmp.multimodule.project.common.umbrella.core.PlatformSDK
 
 class KmpSampleApp: Application() {
 

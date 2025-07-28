@@ -60,9 +60,9 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(libs.bundles.navigation)
             implementation(projects.common.core)
-            implementation(projects.common.umbrella)
-            implementation(projects.common.root.compose)
             implementation(projects.common.coreCompose)
+            implementation(projects.common.umbrellaCore)
+            implementation(projects.common.root.compose)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)

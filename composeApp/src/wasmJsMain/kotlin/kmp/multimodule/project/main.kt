@@ -6,9 +6,10 @@ import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
 import kmp.multimodule.project.common.core.PlatformConfiguration
 import kmp.multimodule.project.common.core.component.ComponentFactory
+import kmp.multimodule.project.common.core.di.Inject
 import kmp.multimodule.project.common.root.RootScreen
 import kmp.multimodule.project.common.root.createRootComponent
-import kmp.multimodule.project.common.umbrella.PlatformSDK
+import kmp.multimodule.project.common.umbrella.core.PlatformSDK
 import kotlinx.browser.document
 import theme.AppTheme
 
@@ -21,7 +22,7 @@ fun main() {
 
         val lifecycle = LifecycleRegistry()
         val componentContext = DefaultComponentContext(lifecycle = lifecycle)
-        val componentFactory = PlatformSDK.koin.get<ComponentFactory>()
+        val componentFactory = Inject.instance<ComponentFactory>()
         val rootComponent = componentFactory.createRootComponent(componentContext)
 
         AppTheme {
