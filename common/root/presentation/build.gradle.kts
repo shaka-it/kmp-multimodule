@@ -1,6 +1,5 @@
 plugins {
     alias(libs.plugins.moduleSetup)
-    alias(libs.plugins.serialization)
 }
 
 android {

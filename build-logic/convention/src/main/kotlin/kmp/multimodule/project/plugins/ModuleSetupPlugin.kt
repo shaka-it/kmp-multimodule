@@ -14,6 +14,7 @@ class ModuleSetupPlugin : Plugin<Project> {
         with(pluginManager) {
             apply(libs.findPlugin("androidLibrary").get().get().pluginId)
             apply(libs.findPlugin("kotlinMultiplatform").get().get().pluginId)
+            apply(libs.findPlugin("serialization").get().get().pluginId)
         }
 
         extensions.configure<KotlinMultiplatformExtension>(::configureKotlinMultiplatform)

@@ -30,8 +30,6 @@ kotlin {
             implementation(libs.multiplatform.settings.no.arg)
 
             api(libs.koin.di)
-
-            api(libs.bundles.decompose.presentation)
         }
 
         androidMain.dependencies {

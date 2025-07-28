@@ -13,8 +13,8 @@ dependencies {
     compileOnly(libs.plugin.android)
     compileOnly(libs.plugin.kotlin)
     compileOnly(libs.plugin.compose)
-    compileOnly(libs.plugin.serialization)
     compileOnly(libs.plugin.sqldelight)
+    implementation(libs.plugin.serialization)
 //    compileOnly(libs.plugin.libres)
 }
 
