@@ -11,10 +11,12 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                api(projects.common.root.presentation)
-                api(projects.common.main.compose)
-                api(projects.common.auth.compose)
                 implementation(projects.common.coreCompose)
+                implementation(projects.common.root.presentation)
+                implementation(projects.common.main.compose)
+                implementation(projects.common.main.presentation)
+                implementation(projects.common.auth.compose)
+                implementation(projects.common.auth.presentation)
             }
         }
     }

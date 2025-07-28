@@ -31,7 +31,7 @@ kotlin {
 
             api(libs.koin.di)
 
-            api(libs.bundles.navigation)
+            api(libs.bundles.decompose.presentation)
         }
 
         androidMain.dependencies {

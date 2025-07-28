@@ -91,10 +91,13 @@ decompose-compose = { module = "com.arkivanov.decompose:extensions-compose", ver
 essenty = { module = "com.arkivanov.essenty:lifecycle-coroutines", version.ref = "essenty" }
 
 [bundles]
-navigation = [
+decompose-compose = [
+    "decompose",
+    "decompose-compose",
+]
+decompose-presentation = [
     "decompose",
     "essenty",
-    "decompose-compose",
 ]
 
 [plugins]

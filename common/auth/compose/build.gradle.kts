@@ -11,8 +11,8 @@ kotlin {
     sourceSets {
         commonMain {
             dependencies {
-                api(projects.common.auth.presentation)
                 implementation(projects.common.coreCompose)
+                implementation(projects.common.auth.presentation)
             }
         }
     }

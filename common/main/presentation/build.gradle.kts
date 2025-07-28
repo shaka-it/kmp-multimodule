@@ -10,7 +10,6 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             implementation(projects.common.core)
-            implementation(libs.bundles.navigation)
         }
     }
 }
