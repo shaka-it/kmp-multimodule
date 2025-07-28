@@ -18,6 +18,10 @@ class ComposeSetupPlugin : Plugin<Project> {
 
         val compose = extensions.getByType<ComposeExtension>().dependencies
 
+        project.dependencies.apply {
+            add("debugImplementation", compose.uiTooling)
+        }
+
         extensions.configure<KotlinMultiplatformExtension> {
             sourceSets.apply {
                 androidMain.dependencies {
