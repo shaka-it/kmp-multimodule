@@ -1,8 +1,8 @@
 package kmp.multimodule.project.common.main.presentation
 
 import com.arkivanov.decompose.ComponentContext
-import kmp.multimodule.project.common.core.component.ComponentFactory
-import kmp.multimodule.project.common.core.utils.Consumer
+import kmp.multimodule.project.common.core.presentation.component.ComponentFactory
+import kmp.multimodule.project.common.core.presentation.utils.Consumer
 import kmp.multimodule.project.common.main.presentation.root.MainModuleComponent
 import kmp.multimodule.project.common.main.presentation.root.MainModuleComponent.NavEvent
 import kmp.multimodule.project.common.main.presentation.root.RealMainModuleComponent

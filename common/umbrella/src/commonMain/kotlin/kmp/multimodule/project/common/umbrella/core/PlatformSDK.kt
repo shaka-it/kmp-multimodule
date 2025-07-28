@@ -4,6 +4,7 @@ import authModule
 import kmp.multimodule.project.common.core.PlatformConfiguration
 import kmp.multimodule.project.common.core.coreModule
 import kmp.multimodule.project.common.core.di.Inject
+import kmp.multimodule.project.common.core.presentation.corePresentationModule
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
 import postsModule
@@ -20,6 +21,7 @@ object PlatformSDK {
         val modules = listOf(
             umbrellaModule,
             coreModule,
+            corePresentationModule,
             postsModule,
             authModule,
         )

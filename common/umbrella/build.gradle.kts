@@ -7,6 +7,7 @@ kotlin {
         commonMain {
             dependencies {
                 implementation(projects.common.core)
+                implementation(projects.common.corePresentation)
                 implementation(projects.common.auth.data)
                 implementation(projects.common.posts.data)
             }

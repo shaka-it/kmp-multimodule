@@ -2,7 +2,7 @@ package kmp.multimodule.project.common.auth.presentation.register
 
 import com.arkivanov.decompose.ComponentContext
 import kmp.multimodule.project.common.auth.presentation.register.RegisterComponent.NavEvent
-import kmp.multimodule.project.common.core.utils.Consumer
+import kmp.multimodule.project.common.core.presentation.utils.Consumer
 
 internal class RealRegisterComponent(
     componentContext: ComponentContext,

@@ -4,7 +4,7 @@ import androidx.compose.ui.window.ComposeUIViewController
 import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.essenty.lifecycle.ApplicationLifecycle
 import kmp.multimodule.project.common.core.PlatformConfiguration
-import kmp.multimodule.project.common.core.component.ComponentFactory
+import kmp.multimodule.project.common.core.presentation.component.ComponentFactory
 import kmp.multimodule.project.common.core.di.Inject
 import kmp.multimodule.project.common.root.RootScreen
 import kmp.multimodule.project.common.root.createRootComponent

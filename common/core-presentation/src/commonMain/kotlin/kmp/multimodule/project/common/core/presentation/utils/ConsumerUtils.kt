@@ -1,4 +1,4 @@
-package kmp.multimodule.project.common.core.utils
+package kmp.multimodule.project.common.core.presentation.utils
 
 fun interface Consumer<in T> {
     fun onConsume(value: T)

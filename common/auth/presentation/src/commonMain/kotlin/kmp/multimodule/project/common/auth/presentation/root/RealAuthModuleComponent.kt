@@ -13,9 +13,9 @@ import kmp.multimodule.project.common.auth.presentation.createRegisterComponent
 import kmp.multimodule.project.common.auth.presentation.forgot.ForgotPasswordComponent
 import kmp.multimodule.project.common.auth.presentation.login.LoginComponent
 import kmp.multimodule.project.common.auth.presentation.register.RegisterComponent
-import kmp.multimodule.project.common.core.component.ComponentFactory
-import kmp.multimodule.project.common.core.utils.Consumer
-import kmp.multimodule.project.common.core.utils.invoke
+import kmp.multimodule.project.common.core.presentation.component.ComponentFactory
+import kmp.multimodule.project.common.core.presentation.utils.Consumer
+import kmp.multimodule.project.common.core.presentation.utils.invoke
 import kotlinx.serialization.Serializable
 
 class RealAuthModuleComponent(

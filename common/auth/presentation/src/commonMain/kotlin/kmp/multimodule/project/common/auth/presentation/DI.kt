@@ -9,8 +9,8 @@ import kmp.multimodule.project.common.auth.presentation.register.RealRegisterCom
 import kmp.multimodule.project.common.auth.presentation.register.RegisterComponent
 import kmp.multimodule.project.common.auth.presentation.root.AuthModuleComponent
 import kmp.multimodule.project.common.auth.presentation.root.RealAuthModuleComponent
-import kmp.multimodule.project.common.core.component.ComponentFactory
-import kmp.multimodule.project.common.core.utils.Consumer
+import kmp.multimodule.project.common.core.presentation.component.ComponentFactory
+import kmp.multimodule.project.common.core.presentation.utils.Consumer
 import org.koin.core.component.get
 
 fun ComponentFactory.createAuthModuleComponent(

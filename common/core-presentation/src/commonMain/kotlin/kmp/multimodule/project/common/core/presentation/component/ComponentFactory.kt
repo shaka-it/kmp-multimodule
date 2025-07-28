@@ -24,7 +24,7 @@
  *   SOFTWARE.
  **/
 
-package kmp.multimodule.project.common.core.component
+package kmp.multimodule.project.common.core.presentation.component
 
 import org.koin.core.Koin
 import org.koin.core.component.KoinComponent

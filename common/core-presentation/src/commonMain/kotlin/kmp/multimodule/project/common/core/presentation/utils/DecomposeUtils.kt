@@ -1,4 +1,4 @@
-package kmp.multimodule.project.common.core.utils
+package kmp.multimodule.project.common.core.presentation.utils
 
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.value.MutableValue

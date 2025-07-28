@@ -9,8 +9,8 @@ import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.decompose.value.Value
 import kmp.multimodule.project.common.auth.presentation.createAuthModuleComponent
 import kmp.multimodule.project.common.auth.presentation.root.AuthModuleComponent
-import kmp.multimodule.project.common.core.component.ComponentFactory
-import kmp.multimodule.project.common.core.utils.Consumer
+import kmp.multimodule.project.common.core.presentation.component.ComponentFactory
+import kmp.multimodule.project.common.core.presentation.utils.Consumer
 import kmp.multimodule.project.common.main.presentation.createMainModuleComponent
 import kmp.multimodule.project.common.main.presentation.root.MainModuleComponent
 import kmp.multimodule.project.common.root.RootComponent.Child

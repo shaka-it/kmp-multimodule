@@ -4,9 +4,9 @@ import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.value.MutableValue
 import com.arkivanov.decompose.value.Value
 import kmp.multimodule.project.common.auth.presentation.login.LoginComponent.ViewState
-import kmp.multimodule.project.common.core.utils.Consumer
-import kmp.multimodule.project.common.core.utils.invoke
-import kmp.multimodule.project.common.core.utils.tryToUpdate
+import kmp.multimodule.project.common.core.presentation.utils.Consumer
+import kmp.multimodule.project.common.core.presentation.utils.invoke
+import kmp.multimodule.project.common.core.presentation.utils.tryToUpdate
 
 internal class RealLoginComponent(
     componentContext: ComponentContext,

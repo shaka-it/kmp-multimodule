@@ -1,4 +1,4 @@
-package kmp.multimodule.project.common.core.component
+package kmp.multimodule.project.common.core.presentation.component
 
 import org.koin.dsl.module
 

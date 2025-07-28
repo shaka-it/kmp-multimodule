@@ -60,7 +60,8 @@ kotlin {
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(projects.common.core)
             implementation(projects.common.coreCompose)
-            implementation(projects.common.umbrellaCore)
+            implementation(projects.common.corePresentation)
+            implementation(projects.common.umbrella)
             implementation(projects.common.root.compose)
             implementation(projects.common.root.presentation)
         }
