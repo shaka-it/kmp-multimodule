@@ -3,15 +3,14 @@ plugins {
 }
 
 android {
-    namespace = "kmp.multimodule.project.common.main.presentation"
+    namespace = "kmp.multimodule.project.common.profile.presentation"
 }
 
 kotlin {
     sourceSets {
         commonMain.dependencies {
+            implementation(projects.common.auth.api)
             implementation(projects.common.corePresentation)
-            implementation(projects.common.posts.presentation)
-            implementation(projects.common.profile.presentation)
         }
     }
 }

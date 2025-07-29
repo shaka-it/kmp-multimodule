@@ -10,6 +10,10 @@ import kmp.multimodule.project.common.core.presentation.component.ComponentFacto
 import kmp.multimodule.project.common.core.presentation.utils.Consumer
 import kmp.multimodule.project.common.core.presentation.utils.invoke
 import kmp.multimodule.project.common.main.presentation.flow.MainFlowComponent.NavEvent
+import kmp.multimodule.project.common.posts.presentation.createMakePostComponent
+import kmp.multimodule.project.common.posts.presentation.createPostsComponent
+import kmp.multimodule.project.common.profile.presentation.ProfileComponent
+import kmp.multimodule.project.common.profile.presentation.createProfileComponent
 import kotlinx.serialization.Serializable
 
 class RealMainFlowComponent(
@@ -34,7 +38,7 @@ class RealMainFlowComponent(
     }
 
     override fun onCreatePostTabClicked() {
-        navigation.bringToFront(Config.CreatePost)
+        navigation.bringToFront(Config.MakePost)
     }
 
     override fun onProfilesTabClicked() {
@@ -47,23 +51,17 @@ class RealMainFlowComponent(
     ): MainFlowComponent.Child =
         when (config) {
             Config.Posts -> MainFlowComponent.Child.Posts(
-                componentFactory.createLoginComponent(
-                    componentContext = componentContext,
-                    onNavEvent = Consumer(::onLoginNavEvent),
-                )
+                componentFactory.createPostsComponent(componentContext = componentContext)
             )
 
-            Config.CreatePost -> MainFlowComponent.Child.CreatePost(
-                componentFactory.createRegisterComponent(
-                    componentContext = componentContext,
-                    onNavEvent = Consumer(::onRegisterNavEvent),
-                )
+            Config.MakePost -> MainFlowComponent.Child.MakePost(
+                componentFactory.createMakePostComponent(componentContext = componentContext)
             )
 
             Config.Profile -> MainFlowComponent.Child.Profile(
-                componentFactory.createForgotPasswordComponent(
+                componentFactory.createProfileComponent(
                     componentContext = componentContext,
-                    onNavEvent = Consumer(::onForgotPasswordNavEvent),
+                    onNavEvent = Consumer(::onProfileNavEvent),
                 )
             )
         }
@@ -79,7 +77,7 @@ class RealMainFlowComponent(
         object Posts : Config
 
         @Serializable
-        object CreatePost : Config
+        object MakePost : Config
 
         @Serializable
         object Profile : Config

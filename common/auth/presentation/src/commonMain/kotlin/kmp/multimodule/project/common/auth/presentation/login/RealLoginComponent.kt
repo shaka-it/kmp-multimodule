@@ -1,17 +1,16 @@
 package kmp.multimodule.project.common.auth.presentation.login
 
-import kmp.multimodule.project.common.auth.api.AuthRepository
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.value.MutableValue
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.lifecycle.coroutines.coroutineScope
+import kmp.multimodule.project.common.auth.api.AuthRepository
 import kmp.multimodule.project.common.auth.presentation.login.LoginComponent.ViewState
 import kmp.multimodule.project.common.core.presentation.utils.Consumer
 import kmp.multimodule.project.common.core.presentation.utils.invoke
 import kmp.multimodule.project.common.core.presentation.utils.tryToUpdate
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import kotlin.coroutines.CoroutineContext
 
 internal class RealLoginComponent(
@@ -19,7 +18,6 @@ internal class RealLoginComponent(
     private val onNavEvent: Consumer<LoginComponent.NavEvent>,
     private val authRepository: AuthRepository,
     mainContext: CoroutineContext,
-    private val ioContext: CoroutineContext,
 ) : LoginComponent, ComponentContext by componentContext {
 
     private val scope = coroutineScope(mainContext + SupervisorJob())
@@ -49,12 +47,10 @@ internal class RealLoginComponent(
         }
         scope.launch {
             try {
-                val response = withContext(ioContext) {
-                    authRepository.login(
-                        viewState.value.email,
-                        viewState.value.password,
+                val response = authRepository.login(
+                        login = viewState.value.email,
+                        password = viewState.value.password,
                     )
-                }
                 if (response.token.isNotBlank()) {
                     viewState.tryToUpdate {
                         it.copy(email = "", password = "", isSending = false)

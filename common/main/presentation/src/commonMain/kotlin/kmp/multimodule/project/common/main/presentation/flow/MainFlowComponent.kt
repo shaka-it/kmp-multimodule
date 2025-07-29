@@ -2,6 +2,9 @@ package kmp.multimodule.project.common.main.presentation.flow
 
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.value.Value
+import kmp.multimodule.project.common.posts.presentation.create.MakePostComponent
+import kmp.multimodule.project.common.posts.presentation.posts.PostsComponent
+import kmp.multimodule.project.common.profile.presentation.ProfileComponent
 
 interface MainFlowComponent {
 
@@ -17,7 +20,7 @@ interface MainFlowComponent {
 
     sealed class Child {
         class Posts(val component: PostsComponent) : Child()
-        class CreatePost(val component: CreatePostComponent) : Child()
+        class MakePost(val component: MakePostComponent) : Child()
         class Profile(val component: ProfileComponent) : Child()
     }
 }
