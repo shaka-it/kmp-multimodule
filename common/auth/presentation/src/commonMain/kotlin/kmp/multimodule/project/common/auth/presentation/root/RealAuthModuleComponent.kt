@@ -65,18 +65,18 @@ class RealAuthModuleComponent(
 
     private fun onLoginNavEvent(output: LoginComponent.NavEvent): Unit =
         when (output) {
-            is LoginComponent.NavEvent.Passed -> onNavEvent(AuthModuleComponent.NavEvent.Passed)
+            is LoginComponent.NavEvent.OpenMainFlow -> onNavEvent(AuthModuleComponent.NavEvent.Passed)
             LoginComponent.NavEvent.OpenForgotPassword -> navigation.pushNew(Config.ForgotPassword)
             LoginComponent.NavEvent.OpenRegister -> navigation.pushNew(Config.Register)
         }
 
     private fun onRegisterNavEvent(output: RegisterComponent.NavEvent): Unit = when (output) {
-        is RegisterComponent.NavEvent.Passed -> onNavEvent(AuthModuleComponent.NavEvent.Passed)
+        is RegisterComponent.NavEvent.Back -> navigation.pop()
     }
 
     private fun onForgotPasswordNavEvent(output: ForgotPasswordComponent.NavEvent): Unit =
         when (output) {
-            is ForgotPasswordComponent.NavEvent.Finished -> navigation.pop()
+            is ForgotPasswordComponent.NavEvent.Back -> navigation.pop()
         }
 
     @Serializable

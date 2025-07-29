@@ -1,3 +1,4 @@
+import kmp.multimodule.project.common.auth.api.AuthRepository
 import ktor.KtorAuthRemoteDataSource
 import org.koin.dsl.module
 import settings.SettingsAuthDataSource

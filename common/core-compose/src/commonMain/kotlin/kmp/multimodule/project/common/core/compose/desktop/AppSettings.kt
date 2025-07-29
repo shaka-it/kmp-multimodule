@@ -1,4 +1,4 @@
-package desktop
+package kmp.multimodule.project.common.core.compose.desktop
 
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.unit.dp

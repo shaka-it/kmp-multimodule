@@ -20,7 +20,7 @@ interface LoginComponent {
     )
 
     sealed interface NavEvent {
-        object Passed : NavEvent
+        object OpenMainFlow : NavEvent
 
         object OpenRegister : NavEvent
 

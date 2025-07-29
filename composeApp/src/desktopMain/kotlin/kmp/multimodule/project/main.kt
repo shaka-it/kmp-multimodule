@@ -10,7 +10,7 @@ import kmp.multimodule.project.common.core.di.Inject
 import kmp.multimodule.project.common.root.RootScreen
 import kmp.multimodule.project.common.root.createRootComponent
 import kmp.multimodule.project.common.umbrella.core.PlatformSDK
-import theme.AppTheme
+import kmp.multimodule.project.common.core.compose.theme.AppTheme
 
 fun main() = application {
     PlatformSDK.init(

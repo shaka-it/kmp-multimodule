@@ -1,4 +1,4 @@
-package models
+package kmp.multimodule.project.common.auth.api.models
 
 import kotlinx.serialization.Serializable
 

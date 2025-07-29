@@ -4,11 +4,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import com.arkivanov.decompose.extensions.compose.stack.Children
+import com.arkivanov.decompose.extensions.compose.stack.animation.slide
+import com.arkivanov.decompose.extensions.compose.stack.animation.stackAnimation
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import kmp.multimodule.project.common.auth.compose.root.AuthModuleScreen
 import kmp.multimodule.project.common.main.compose.MainModuleScreen
 import org.jetbrains.compose.ui.tooling.preview.Preview
-import theme.AppTheme
+import kmp.multimodule.project.common.core.compose.theme.AppTheme
 
 @Composable
 fun RootScreen(
@@ -17,7 +19,11 @@ fun RootScreen(
 ) {
     val childStack by component.childStack.subscribeAsState()
 
-    Children(childStack, modifier) { child ->
+    Children(
+        stack = childStack,
+        modifier = modifier,
+        animation = stackAnimation(slide()),
+    ) { child ->
         when (val instance = child.instance) {
             is RootComponent.Child.AuthModule -> AuthModuleScreen(instance.component)
             is RootComponent.Child.MainModule -> MainModuleScreen(instance.component)

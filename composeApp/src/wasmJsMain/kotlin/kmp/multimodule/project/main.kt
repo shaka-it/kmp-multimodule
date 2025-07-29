@@ -11,7 +11,7 @@ import kmp.multimodule.project.common.root.RootScreen
 import kmp.multimodule.project.common.root.createRootComponent
 import kmp.multimodule.project.common.umbrella.core.PlatformSDK
 import kotlinx.browser.document
-import theme.AppTheme
+import kmp.multimodule.project.common.core.compose.theme.AppTheme
 
 @OptIn(ExperimentalComposeUiApi::class)
 fun main() {

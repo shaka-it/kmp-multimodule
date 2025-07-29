@@ -11,6 +11,7 @@ import kmp.multimodule.project.common.auth.presentation.root.AuthModuleComponent
 import kmp.multimodule.project.common.auth.presentation.root.RealAuthModuleComponent
 import kmp.multimodule.project.common.core.presentation.component.ComponentFactory
 import kmp.multimodule.project.common.core.presentation.utils.Consumer
+import kotlinx.coroutines.Dispatchers
 import org.koin.core.component.get
 
 fun ComponentFactory.createAuthModuleComponent(
@@ -31,6 +32,9 @@ fun ComponentFactory.createLoginComponent(
     return RealLoginComponent(
         componentContext = componentContext,
         onNavEvent = onNavEvent,
+        mainContext = Dispatchers.Main.immediate,
+        ioContext = Dispatchers.Default,
+        authRepository = get(),
     )
 }
 

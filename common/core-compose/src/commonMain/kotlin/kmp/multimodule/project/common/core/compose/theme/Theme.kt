@@ -1,4 +1,4 @@
-package theme
+package kmp.multimodule.project.common.core.compose.theme
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -12,7 +12,7 @@ fun AppTheme(content: @Composable () -> Unit) {
 }
 
 object Theme {
-    val colors: GameColors
+    val colors: AppColors
         @Composable
         get() = LocalColorProvider.current
 }

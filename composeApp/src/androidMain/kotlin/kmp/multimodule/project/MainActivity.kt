@@ -5,11 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.arkivanov.decompose.defaultComponentContext
-import kmp.multimodule.project.common.core.presentation.component.ComponentFactory
+import kmp.multimodule.project.common.core.compose.theme.AppTheme
 import kmp.multimodule.project.common.core.di.Inject
+import kmp.multimodule.project.common.core.presentation.component.ComponentFactory
 import kmp.multimodule.project.common.root.RootScreen
 import kmp.multimodule.project.common.root.createRootComponent
-import theme.AppTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

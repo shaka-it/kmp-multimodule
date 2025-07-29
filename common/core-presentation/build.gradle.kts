@@ -12,6 +12,7 @@ kotlin {
             dependencies {
                 api(libs.bundles.decompose.presentation)
                 api(libs.koin.di)
+                api(libs.coroutines.core)
             }
         }
     }

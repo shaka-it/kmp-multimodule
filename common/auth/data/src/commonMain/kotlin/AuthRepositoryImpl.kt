@@ -1,11 +1,12 @@
+import kmp.multimodule.project.common.auth.api.AuthRepository
 import ktor.KtorAuthRemoteDataSource
 import ktor.KtorLoginRequest
-import models.Token
+import kmp.multimodule.project.common.auth.api.models.Token
 import settings.SettingsAuthDataSource
 
 class AuthRepositoryImpl(
     private val remoteDataSource: KtorAuthRemoteDataSource,
-    private val cacheDataSource: SettingsAuthDataSource
+    private val cacheDataSource: SettingsAuthDataSource,
 ) : AuthRepository {
 
     override suspend fun login(login: String, password: String): Token {

@@ -5,5 +5,9 @@ import kmp.multimodule.project.common.core.presentation.component.ComponentFacto
 import org.koin.core.component.get
 
 fun ComponentFactory.createRootComponent(componentContext: ComponentContext): RootComponent {
-    return RealRootComponent(componentContext = componentContext, componentFactory = get())
+    return RealRootComponent(
+        componentContext = componentContext,
+        componentFactory = get(),
+        authRepository = get(),
+    )
 }

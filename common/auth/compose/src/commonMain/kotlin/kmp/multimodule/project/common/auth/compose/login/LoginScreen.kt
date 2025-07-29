@@ -1,90 +1,94 @@
 package kmp.multimodule.project.common.auth.compose.login
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import kmp.multimodule.project.common.auth.presentation.login.FakeLoginComponent
 import kmp.multimodule.project.common.auth.presentation.login.LoginComponent
+import kmp.multimodule.project.common.core.compose.components.ThemedButton
+import kmp.multimodule.project.common.core.compose.components.ThemedTextButton
+import kmp.multimodule.project.common.core.compose.components.ThemedTextField
+import kmp.multimodule.project.common.core.compose.theme.AppTheme
+import kmp.multimodule.project.common.core.compose.theme.Theme.colors
 import org.jetbrains.compose.ui.tooling.preview.Preview
-import theme.AppTheme
-import theme.Theme
 
 @Composable
-fun LoginScreen(component: LoginComponent) {
+fun LoginScreen(
+    component: LoginComponent,
+    modifier: Modifier = Modifier
+) {
+    val state by component.viewState.subscribeAsState()
+
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier
+            .fillMaxSize()
+            .background(colors.primaryBackground)
+            .padding(16.dp),
         verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Login Screen",
-            color = Theme.colors.primaryTextColor,
-            fontSize = 16.sp,
+            text = "Login",
+            fontSize = 32.sp,
             fontWeight = FontWeight.Bold,
+            color = colors.primaryTextColor
         )
-        Button(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(56.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Theme.colors.primaryAction,
-            ),
-            enabled = true,
-            shape = RoundedCornerShape(10.dp),
+        Spacer(modifier = Modifier.height(24.dp))
+
+        ThemedTextField(
+            value = state.email,
+            onValueChange = component::onEmailChanged,
+            label = "Email",
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        ThemedTextField(
+            value = state.password,
+            onValueChange = component::onPasswordChanged,
+            label = "Password",
+            modifier = Modifier.fillMaxWidth(),
+            imeAction = ImeAction.Done,
+            isPassword = true,
+            isHidden = state.isPasswordHidden,
+            onToggleHidden = component::onPasswordShowClick
+        )
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        ThemedButton(
+            text = if (state.isSending) "Logging in…" else "Login",
             onClick = component::onLoginClick,
+            modifier = Modifier.fillMaxWidth().height(48.dp),
+            enabled = !state.isSending,
+            loading = state.isSending
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            Text(
-                text = "Login",
-                color = Theme.colors.primaryTextColor,
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Bold,
-            )
-        }
-        Button(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(56.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Theme.colors.primaryAction,
-            ),
-            enabled = true,
-            shape = RoundedCornerShape(10.dp),
-            onClick = component::onForgotClick,
-        ) {
-            Text(
-                text = "Forgot",
-                color = Theme.colors.primaryTextColor,
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Bold,
-            )
-        }
-        Button(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(56.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = Theme.colors.primaryAction,
-            ),
-            enabled = true,
-            shape = RoundedCornerShape(10.dp),
-            onClick = component::onRegisterClick,
-        ) {
-            Text(
-                text = "Register",
-                color = Theme.colors.primaryTextColor,
-                fontSize = 16.sp,
-                fontWeight = FontWeight.Bold,
-            )
+            ThemedTextButton(text = "Forgot Password?", onClick = component::onForgotClick)
+            ThemedTextButton(text = "Register", onClick = component::onRegisterClick)
         }
     }
 }
