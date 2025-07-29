@@ -5,15 +5,14 @@ import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
-import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.pushNew
 import com.arkivanov.decompose.value.Value
 import kmp.multimodule.project.common.auth.presentation.createAuthModuleComponent
-import kmp.multimodule.project.common.auth.presentation.root.AuthModuleComponent
+import kmp.multimodule.project.common.auth.presentation.flow.AuthFlowComponent
 import kmp.multimodule.project.common.core.presentation.component.ComponentFactory
 import kmp.multimodule.project.common.core.presentation.utils.Consumer
 import kmp.multimodule.project.common.main.presentation.createMainModuleComponent
-import kmp.multimodule.project.common.main.presentation.root.MainModuleComponent
+import kmp.multimodule.project.common.main.presentation.flow.MainFlowComponent
 import kmp.multimodule.project.common.root.RootComponent.Child
 import kotlinx.serialization.Serializable
 
@@ -61,14 +60,14 @@ class RealRootComponent(
             )
         }
 
-    private fun onAuthNavEvent(output: AuthModuleComponent.NavEvent): Unit =
+    private fun onAuthNavEvent(output: AuthFlowComponent.NavEvent): Unit =
         when (output) {
-            is AuthModuleComponent.NavEvent.Passed -> navigation.pushNew(Config.Main)
+            is AuthFlowComponent.NavEvent.OpenMainFlow -> navigation.pushNew(Config.Main)
         }
 
-    private fun onMainNavEvent(output: MainModuleComponent.NavEvent): Unit =
+    private fun onMainNavEvent(output: MainFlowComponent.NavEvent): Unit =
         when (output) {
-            is MainModuleComponent.NavEvent.Finished -> navigation.pop()
+            is MainFlowComponent.NavEvent.OpenAuthFlow -> navigation.pushNew(Config.Auth)
         }
 
     @Serializable

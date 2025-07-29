@@ -7,8 +7,8 @@ import kmp.multimodule.project.common.auth.presentation.login.LoginComponent
 import kmp.multimodule.project.common.auth.presentation.login.RealLoginComponent
 import kmp.multimodule.project.common.auth.presentation.register.RealRegisterComponent
 import kmp.multimodule.project.common.auth.presentation.register.RegisterComponent
-import kmp.multimodule.project.common.auth.presentation.root.AuthModuleComponent
-import kmp.multimodule.project.common.auth.presentation.root.RealAuthModuleComponent
+import kmp.multimodule.project.common.auth.presentation.flow.AuthFlowComponent
+import kmp.multimodule.project.common.auth.presentation.flow.RealAuthFlowComponent
 import kmp.multimodule.project.common.core.presentation.component.ComponentFactory
 import kmp.multimodule.project.common.core.presentation.utils.Consumer
 import kotlinx.coroutines.Dispatchers
@@ -16,9 +16,9 @@ import org.koin.core.component.get
 
 fun ComponentFactory.createAuthModuleComponent(
     componentContext: ComponentContext,
-    onNavEvent: Consumer<AuthModuleComponent.NavEvent>,
-): AuthModuleComponent {
-    return RealAuthModuleComponent(
+    onNavEvent: Consumer<AuthFlowComponent.NavEvent>,
+): AuthFlowComponent {
+    return RealAuthFlowComponent(
         componentContext = componentContext,
         onNavEvent = onNavEvent,
         componentFactory = get(),

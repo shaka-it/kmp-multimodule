@@ -1,10 +1,10 @@
-package kmp.multimodule.project.common.auth.presentation.root
+package kmp.multimodule.project.common.auth.presentation.flow
 
 import kmp.multimodule.project.common.auth.presentation.login.FakeLoginComponent
 import kmp.multimodule.project.common.core.presentation.utils.createFakeChildStackValue
 
-class FakeAuthModuleComponent : AuthModuleComponent {
+class FakeAuthFlowComponent : AuthFlowComponent {
     override val childStack = createFakeChildStackValue(
-        AuthModuleComponent.Child.Login(FakeLoginComponent())
+        AuthFlowComponent.Child.Login(FakeLoginComponent())
     )
 }

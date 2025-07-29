@@ -1,4 +1,4 @@
-package kmp.multimodule.project.common.auth.presentation.root
+package kmp.multimodule.project.common.auth.presentation.flow
 
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.value.Value
@@ -6,16 +6,20 @@ import kmp.multimodule.project.common.auth.presentation.forgot.ForgotPasswordCom
 import kmp.multimodule.project.common.auth.presentation.login.LoginComponent
 import kmp.multimodule.project.common.auth.presentation.register.RegisterComponent
 
-interface AuthModuleComponent {
+interface AuthFlowComponent {
     val childStack: Value<ChildStack<*, Child>>
 
     sealed interface NavEvent {
-        object Passed : NavEvent
+        object OpenMainFlow :
+            NavEvent
     }
 
     sealed interface Child {
-        class Login(val component: LoginComponent) : Child
-        class Register(val component: RegisterComponent) : Child
-        class ForgotPassword(val component: ForgotPasswordComponent) : Child
+        class Login(val component: LoginComponent) :
+            Child
+        class Register(val component: RegisterComponent) :
+            Child
+        class ForgotPassword(val component: ForgotPasswordComponent) :
+            Child
     }
 }

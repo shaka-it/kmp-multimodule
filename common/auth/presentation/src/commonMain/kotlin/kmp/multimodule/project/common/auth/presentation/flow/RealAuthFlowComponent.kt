@@ -1,4 +1,4 @@
-package kmp.multimodule.project.common.auth.presentation.root
+package kmp.multimodule.project.common.auth.presentation.flow
 
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.router.stack.ChildStack
@@ -18,11 +18,11 @@ import kmp.multimodule.project.common.core.presentation.utils.Consumer
 import kmp.multimodule.project.common.core.presentation.utils.invoke
 import kotlinx.serialization.Serializable
 
-class RealAuthModuleComponent(
+class RealAuthFlowComponent(
     componentContext: ComponentContext,
-    private val onNavEvent: Consumer<AuthModuleComponent.NavEvent>,
+    private val onNavEvent: Consumer<AuthFlowComponent.NavEvent>,
     private val componentFactory: ComponentFactory,
-) : AuthModuleComponent, ComponentContext by componentContext {
+) : AuthFlowComponent, ComponentContext by componentContext {
 
     private val navigation = StackNavigation<Config>()
 
@@ -34,28 +34,28 @@ class RealAuthModuleComponent(
         serializer = Config.serializer(),
     )
 
-    override val childStack: Value<ChildStack<*, AuthModuleComponent.Child>> = stack
+    override val childStack: Value<ChildStack<*, AuthFlowComponent.Child>> = stack
 
     private fun createChild(
         config: Config,
         componentContext: ComponentContext,
-    ): AuthModuleComponent.Child =
+    ): AuthFlowComponent.Child =
         when (config) {
-            Config.Login -> AuthModuleComponent.Child.Login(
+            Config.Login -> AuthFlowComponent.Child.Login(
                 componentFactory.createLoginComponent(
                     componentContext = componentContext,
                     onNavEvent = Consumer(::onLoginNavEvent),
                 )
             )
 
-            Config.Register -> AuthModuleComponent.Child.Register(
+            Config.Register -> AuthFlowComponent.Child.Register(
                 componentFactory.createRegisterComponent(
                     componentContext = componentContext,
                     onNavEvent = Consumer(::onRegisterNavEvent),
                 )
             )
 
-            Config.ForgotPassword -> AuthModuleComponent.Child.ForgotPassword(
+            Config.ForgotPassword -> AuthFlowComponent.Child.ForgotPassword(
                 componentFactory.createForgotPasswordComponent(
                     componentContext = componentContext,
                     onNavEvent = Consumer(::onForgotPasswordNavEvent),
@@ -65,7 +65,7 @@ class RealAuthModuleComponent(
 
     private fun onLoginNavEvent(output: LoginComponent.NavEvent): Unit =
         when (output) {
-            is LoginComponent.NavEvent.OpenMainFlow -> onNavEvent(AuthModuleComponent.NavEvent.Passed)
+            is LoginComponent.NavEvent.OpenMainFlow -> onNavEvent(AuthFlowComponent.NavEvent.OpenMainFlow)
             LoginComponent.NavEvent.OpenForgotPassword -> navigation.pushNew(Config.ForgotPassword)
             LoginComponent.NavEvent.OpenRegister -> navigation.pushNew(Config.Register)
         }

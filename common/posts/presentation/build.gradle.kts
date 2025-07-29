@@ -5,3 +5,12 @@ plugins {
 android {
     namespace = "kmp.multimodule.project.common.posts.presentation"
 }
+
+kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            implementation(projects.common.posts.api)
+            implementation(projects.common.corePresentation)
+        }
+    }
+}
