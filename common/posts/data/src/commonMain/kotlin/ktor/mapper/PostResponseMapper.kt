@@ -1,11 +1,11 @@
 package ktor.mapper
 
 import ktor.models.GameResponse
-import models.Game
+import models.Post
 
 internal class PostResponseMapper {
-    fun toGame(from: GameResponse): Game {
-        return Game(
+    fun toGame(from: GameResponse): Post {
+        return Post(
             id = from.id.orEmpty(),
             order = from.order ?: 0L,
             text = from.text.orEmpty(),

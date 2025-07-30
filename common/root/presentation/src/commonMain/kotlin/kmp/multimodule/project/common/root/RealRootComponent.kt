@@ -6,6 +6,7 @@ import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.router.stack.StackNavigation
 import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pushNew
+import com.arkivanov.decompose.router.stack.replaceAll
 import com.arkivanov.decompose.value.Value
 import kmp.multimodule.project.common.auth.presentation.createAuthModuleComponent
 import kmp.multimodule.project.common.auth.presentation.flow.AuthFlowComponent
@@ -62,12 +63,12 @@ class RealRootComponent(
 
     private fun onAuthNavEvent(output: AuthFlowComponent.NavEvent): Unit =
         when (output) {
-            is AuthFlowComponent.NavEvent.OpenMainFlow -> navigation.pushNew(Config.Main)
+            is AuthFlowComponent.NavEvent.OpenMainFlow -> navigation.replaceAll(Config.Main)
         }
 
     private fun onMainNavEvent(output: MainFlowComponent.NavEvent): Unit =
         when (output) {
-            is MainFlowComponent.NavEvent.OpenAuthFlow -> navigation.pushNew(Config.Auth)
+            is MainFlowComponent.NavEvent.OpenAuthFlow -> navigation.replaceAll(Config.Auth)
         }
 
     @Serializable

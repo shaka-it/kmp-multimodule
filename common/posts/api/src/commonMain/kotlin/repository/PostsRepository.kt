@@ -1,8 +1,8 @@
 package repository
 
-import models.Game
+import models.Post
 
 interface PostsRepository {
-    suspend fun fetchAllPosts(): List<Game>
-    suspend fun searchPosts(query: String): List<Game>
+    suspend fun fetchAllPosts(): List<Post>
+    suspend fun searchPosts(query: String): List<Post>
 }

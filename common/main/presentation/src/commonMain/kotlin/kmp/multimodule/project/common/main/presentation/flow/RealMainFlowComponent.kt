@@ -37,7 +37,7 @@ class RealMainFlowComponent(
         navigation.bringToFront(Config.Posts)
     }
 
-    override fun onCreatePostTabClicked() {
+    override fun onMakePostTabClicked() {
         navigation.bringToFront(Config.MakePost)
     }
 

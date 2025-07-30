@@ -10,7 +10,7 @@ class FakeMainFlowComponent : MainFlowComponent {
 
     override fun onPostsTabClicked() = Unit
 
-    override fun onCreatePostTabClicked() = Unit
+    override fun onMakePostTabClicked() = Unit
 
     override fun onProfilesTabClicked() = Unit
 }

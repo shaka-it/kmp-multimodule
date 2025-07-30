@@ -33,7 +33,6 @@ fun ComponentFactory.createLoginComponent(
         componentContext = componentContext,
         onNavEvent = onNavEvent,
         mainContext = Dispatchers.Main.immediate,
-        ioContext = Dispatchers.Default,
         authRepository = get(),
     )
 }

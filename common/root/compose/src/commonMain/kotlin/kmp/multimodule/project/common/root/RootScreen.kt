@@ -8,6 +8,8 @@ import com.arkivanov.decompose.extensions.compose.stack.animation.slide
 import com.arkivanov.decompose.extensions.compose.stack.animation.stackAnimation
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import kmp.multimodule.project.common.auth.compose.root.AuthModuleScreen
+import kmp.multimodule.project.common.core.compose.desktop.LocalAppSettings
+import kmp.multimodule.project.common.core.compose.desktop.WindowState
 import kmp.multimodule.project.common.main.compose.MainModuleScreen
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import kmp.multimodule.project.common.core.compose.theme.AppTheme
@@ -18,6 +20,7 @@ fun RootScreen(
     modifier: Modifier = Modifier,
 ) {
     val childStack by component.childStack.subscribeAsState()
+    val appSettings = LocalAppSettings.current
 
     Children(
         stack = childStack,
@@ -26,7 +29,10 @@ fun RootScreen(
     ) { child ->
         when (val instance = child.instance) {
             is RootComponent.Child.AuthModule -> AuthModuleScreen(instance.component)
-            is RootComponent.Child.MainModule -> MainModuleScreen(instance.component)
+            is RootComponent.Child.MainModule -> {
+                MainModuleScreen(instance.component)
+                appSettings.updateWindowState(WindowState.FullScreen)
+            }
         }
     }
 }

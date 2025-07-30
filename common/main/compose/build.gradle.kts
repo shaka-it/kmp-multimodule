@@ -13,6 +13,10 @@ kotlin {
             dependencies {
                 implementation(projects.common.coreCompose)
                 implementation(projects.common.main.presentation)
+                implementation(projects.common.profile.compose)
+                implementation(projects.common.profile.presentation)
+                implementation(projects.common.posts.compose)
+                implementation(projects.common.posts.presentation)
             }
         }
     }

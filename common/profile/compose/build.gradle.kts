@@ -6,3 +6,15 @@ plugins {
 android {
     namespace = "kmp.multimodule.project.common.profile.compose"
 }
+
+kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            implementation(projects.common.profile.presentation)
+            implementation(projects.common.coreCompose)
+
+            implementation(libs.image.loader.core)
+            implementation(libs.image.loader.compose)
+        }
+    }
+}

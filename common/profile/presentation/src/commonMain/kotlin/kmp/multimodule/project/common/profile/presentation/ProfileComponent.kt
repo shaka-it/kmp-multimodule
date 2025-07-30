@@ -10,7 +10,7 @@ interface ProfileComponent {
     data class ViewState(
         val name: String = "",
         val surname: String = "",
-        val image: String = "",
+        val imageUrl: String = "",
     )
 
     sealed interface NavEvent {

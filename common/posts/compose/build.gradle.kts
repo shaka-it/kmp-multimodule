@@ -6,3 +6,12 @@ plugins {
 android {
     namespace = "kmp.multimodule.project.common.posts.compose"
 }
+
+kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            implementation(projects.common.coreCompose)
+            implementation(projects.common.posts.presentation)
+        }
+    }
+}
