@@ -24,6 +24,7 @@ androidx-lifecycle = "2.9.1"
 androidx-activity = "1.10.1"
 decompose = "3.3.0"
 essenty = "2.5.0"
+kotlinx-browser = "0.3"
 
 [libraries]
 plugin-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -50,11 +51,11 @@ coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", ve
 coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "coroutines" }
 
 sqldelight-android-driver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqldelight" }
+sqldelight-coroutines = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqldelight" }
 sqldelight-native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqldelight" }
 sqldelight-sqlite-driver = { module = "app.cash.sqldelight:sqlite-driver", version.ref = "sqldelight" }
-sqldelight-wasmjs-driver = { module = "app.cash.sqldelight:web-worker-driver-wasm-js", version.ref = "sqldelight" }
-sqldelight-wasmjs-runtime = { module = "app.cash.sqldelight:runtime-wasm-js", version.ref = "sqldelight" }
-sqldelight-wasmjs-kotlin = { module = "org.jetbrains.kotlin:kotlin-stdlib-wasm-js", version.ref = "kotlin" }
+sqldelight-wasmjs-driver = { module = "app.cash.sqldelight:web-worker-driver", version.ref = "sqldelight" }
+kotlinx-browser = { module = "org.jetbrains.kotlinx:kotlinx-browser", version.ref = "kotlinx-browser" }
 
 multiplatform-settings-core = { module = "com.russhwolf:multiplatform-settings", version.ref = "settings" }
 multiplatform-settings-no-arg = { module = "com.russhwolf:multiplatform-settings-no-arg", version.ref = "settings" }

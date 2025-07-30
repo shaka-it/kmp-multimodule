@@ -1,4 +1,4 @@
-package settings
+package kmp.multimodule.project.common.auth.data.settings
 
 import com.russhwolf.settings.Settings
 import com.russhwolf.settings.get

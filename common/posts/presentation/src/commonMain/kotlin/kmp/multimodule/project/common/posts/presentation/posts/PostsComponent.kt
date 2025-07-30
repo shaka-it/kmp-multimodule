@@ -1,3 +1,12 @@
 package kmp.multimodule.project.common.posts.presentation.posts
 
-interface PostsComponent
+import com.arkivanov.decompose.value.Value
+import kmp.multimodule.project.common.posts.presentation.model.PostDvo
+
+interface PostsComponent {
+    val viewState: Value<ViewState>
+
+    data class ViewState(
+        val posts: List<PostDvo> = emptyList(),
+    )
+}

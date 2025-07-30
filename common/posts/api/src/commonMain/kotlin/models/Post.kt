@@ -1,8 +1,7 @@
 package models
 
 data class Post(
-    val id: String = "",
-    val order: Long = 0L,
-    val text: String = "",
-    val isDone: Boolean = false,
+    val id: Long = 0L,
+    val title: String,
+    val description: String,
 )

@@ -1,9 +1,11 @@
-import kmp.multimodule.project.common.auth.api.AuthRepository
-import ktor.KtorAuthRemoteDataSource
-import org.koin.dsl.module
-import settings.SettingsAuthDataSource
+package kmp.multimodule.project.common.auth.data
 
-val authModule = module {
+import kmp.multimodule.project.common.auth.api.AuthRepository
+import kmp.multimodule.project.common.auth.data.ktor.KtorAuthRemoteDataSource
+import kmp.multimodule.project.common.auth.data.settings.SettingsAuthDataSource
+import org.koin.dsl.module
+
+val authDataModule = module {
     single<AuthRepository> {
         AuthRepositoryImpl(
             remoteDataSource = get(),

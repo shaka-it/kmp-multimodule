@@ -1,4 +1,4 @@
-package ktor
+package kmp.multimodule.project.common.auth.data.ktor
 
 import io.ktor.client.HttpClient
 import kmp.multimodule.project.common.auth.api.models.Token

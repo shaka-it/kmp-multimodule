@@ -1,4 +1,4 @@
-package ktor
+package kmp.multimodule.project.common.auth.data.ktor
 
 import kotlinx.serialization.Serializable
 

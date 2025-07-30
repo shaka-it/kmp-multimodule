@@ -1,8 +1,9 @@
 package repository
 
+import kotlinx.coroutines.flow.Flow
 import models.Post
 
 interface PostsRepository {
-    suspend fun fetchAllPosts(): List<Post>
-    suspend fun searchPosts(query: String): List<Post>
+    suspend fun fetchAllPosts(): Flow<List<Post>>
+    suspend fun createPost(post: Post)
 }

@@ -3,7 +3,6 @@ package kmp.multimodule.project
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import com.arkivanov.decompose.defaultComponentContext
 import kmp.multimodule.project.common.core.compose.theme.AppTheme
 import kmp.multimodule.project.common.core.di.Inject
@@ -13,7 +12,6 @@ import kmp.multimodule.project.common.root.createRootComponent
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
 
         val componentFactory = Inject.instance<ComponentFactory>()

@@ -10,6 +10,7 @@ kotlin {
                 implementation(projects.common.corePresentation)
                 implementation(projects.common.auth.data)
                 implementation(projects.common.posts.data)
+                implementation(projects.common.posts.presentation)
             }
         }
     }

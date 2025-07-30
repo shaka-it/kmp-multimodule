@@ -6,8 +6,8 @@ plugins {
 
 sqldelight {
     databases {
-        create("Database") {
-            packageName.set("kmp.multimodule.project")
+        create("AppDatabase") {
+            packageName.set("kmp.multimodule.project.db")
             generateAsync.set(true)
         }
     }
@@ -48,12 +48,11 @@ kotlin {
         }
 
         wasmJsMain.dependencies {
-            implementation(libs.sqldelight.wasmjs.runtime)
             implementation(libs.sqldelight.wasmjs.driver)
-            implementation(libs.sqldelight.wasmjs.kotlin)
-            implementation(npm("sql.js", "1.12.0"))
+            implementation(libs.kotlinx.browser)
+            implementation(npm("sql.js", "1.8.0"))
             implementation(npm("@cashapp/sqldelight-sqljs-worker", "2.1.0"))
-            implementation(devNpm("copy-webpack-plugin", "9.1.0"))
+            implementation(devNpm("copy-webpack-plugin", "11.0.0"))
         }
     }
 }

@@ -1,0 +1,13 @@
+CREATE TABLE IF NOT EXISTS PostEntity (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    description TEXT NOT NULL
+);
+
+selectAll:
+SELECT *
+FROM PostEntity;
+
+insert:
+INSERT INTO PostEntity (title, description)
+VALUES (?, ?);

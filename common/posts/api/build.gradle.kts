@@ -5,3 +5,11 @@ plugins {
 android {
     namespace = "kmp.multimodule.project.common.posts.api"
 }
+
+kotlin {
+    sourceSets {
+        commonMain.dependencies {
+            api(libs.coroutines.core)
+        }
+    }
+}

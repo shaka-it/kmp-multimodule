@@ -1,10 +1,12 @@
+package kmp.multimodule.project.common.auth.data
+
 import kmp.multimodule.project.common.auth.api.AuthRepository
 import kmp.multimodule.project.common.auth.api.models.Token
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import ktor.KtorAuthRemoteDataSource
-import ktor.KtorLoginRequest
-import settings.SettingsAuthDataSource
+import kmp.multimodule.project.common.auth.data.ktor.KtorAuthRemoteDataSource
+import kmp.multimodule.project.common.auth.data.ktor.KtorLoginRequest
+import kmp.multimodule.project.common.auth.data.settings.SettingsAuthDataSource
 
 class AuthRepositoryImpl(
     private val remoteDataSource: KtorAuthRemoteDataSource,

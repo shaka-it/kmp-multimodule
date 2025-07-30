@@ -1,13 +1,14 @@
 package kmp.multimodule.project.common.umbrella.core
 
-import authModule
+import kmp.multimodule.project.common.auth.data.authDataModule
 import kmp.multimodule.project.common.core.PlatformConfiguration
 import kmp.multimodule.project.common.core.coreModule
 import kmp.multimodule.project.common.core.di.Inject
 import kmp.multimodule.project.common.core.presentation.corePresentationModule
+import kmp.multimodule.project.common.posts.data.postsDataModule
+import kmp.multimodule.project.common.posts.presentation.postsPresentationModule
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
-import postsModule
 
 object PlatformSDK {
     fun init(
@@ -22,8 +23,9 @@ object PlatformSDK {
             umbrellaModule,
             coreModule,
             corePresentationModule,
-            postsModule,
-            authModule,
+            postsDataModule,
+            authDataModule,
+            postsPresentationModule,
         )
 
         Inject.init(

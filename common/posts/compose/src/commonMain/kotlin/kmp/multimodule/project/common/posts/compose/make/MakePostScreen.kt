@@ -1,13 +1,21 @@
 package kmp.multimodule.project.common.posts.compose.make
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.unit.dp
+import com.arkivanov.decompose.extensions.compose.subscribeAsState
+import kmp.multimodule.project.common.core.compose.components.ThemedButton
+import kmp.multimodule.project.common.core.compose.components.ThemedTextField
 import kmp.multimodule.project.common.core.compose.theme.AppTheme
 import kmp.multimodule.project.common.core.compose.theme.Theme.colors
 import kmp.multimodule.project.common.posts.presentation.make.FakeMakePostComponent
@@ -19,16 +27,43 @@ fun MakePostScreen(
     component: MakePostComponent,
     modifier: Modifier = Modifier,
 ) {
-    Box(
+    val state by component.viewState.subscribeAsState()
+
+    Column(
         modifier = modifier
             .fillMaxSize()
-            .background(color = colors.primaryBackground),
-        contentAlignment = Alignment.Center
+            .background(colors.primaryBackground)
+            .padding(16.dp),
+        verticalArrangement = Arrangement.Top
     ) {
-        Text(
-            text = "This is the make post screen",
-            fontSize = 18.sp,
-            color = colors.primaryTextColor,
+        ThemedTextField(
+            value = state.title,
+            onValueChange = component::onTitleChanged,
+            label = "Title",
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        Spacer(modifier = Modifier.height(16.dp))
+
+        ThemedTextField(
+            value = state.description,
+            onValueChange = component::onDescriptionChanged,
+            label = "Description",
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(150.dp),
+            singleLine = false,
+            imeAction = ImeAction.Default
+        )
+
+        Spacer(modifier = Modifier.height(24.dp))
+
+        ThemedButton(
+            text = "Post",
+            onClick = component::onMakePostClick,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(48.dp)
         )
     }
 }
