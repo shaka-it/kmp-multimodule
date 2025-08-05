@@ -21,7 +21,7 @@ kotlin {
             api(libs.coroutines.core)
 
             api(libs.ktor.client.core)
-            implementation(libs.ktor.client.json)
+            implementation(libs.ktor.serialization.json)
             implementation(libs.ktor.client.serialization)
             implementation(libs.ktor.client.negotiation)
             implementation(libs.ktor.client.logging)
@@ -29,7 +29,7 @@ kotlin {
             implementation(libs.multiplatform.settings.core)
             implementation(libs.multiplatform.settings.no.arg)
 
-            api(libs.koin.di)
+            api(libs.koin.core)
         }
 
         androidMain.dependencies {

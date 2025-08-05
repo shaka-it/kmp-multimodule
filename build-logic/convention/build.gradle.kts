@@ -15,7 +15,6 @@ dependencies {
     compileOnly(libs.plugin.compose)
     compileOnly(libs.plugin.sqldelight)
     implementation(libs.plugin.serialization)
-//    compileOnly(libs.plugin.libres)
 }
 
 gradlePlugin {

@@ -11,7 +11,7 @@ kotlin {
         commonMain {
             dependencies {
                 api(libs.bundles.decompose.presentation)
-                api(libs.koin.di)
+                api(libs.koin.core)
                 api(libs.coroutines.core)
             }
         }
