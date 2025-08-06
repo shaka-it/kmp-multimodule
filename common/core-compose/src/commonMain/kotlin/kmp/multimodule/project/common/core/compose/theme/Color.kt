@@ -16,15 +16,15 @@ data class AppColors(
 )
 
 val palette = AppColors(
-    primaryBackground   = Color(0xFF000000),
-    primaryAction       = Color(0xFFFFD700),
-    primaryTextColor    = Color(0xFFFFFFFF),
+    primaryBackground   = Color(0xFFFFFFFF),
+    primaryAction       = Color(0xFF2196F3),
+    primaryTextColor    = Color(0xFF000000),
     hintTextColor       = Color(0xFF888888),
-    highlightTextColor  = Color(0xFFFFD700),
+    highlightTextColor  = Color(0xFF2196F3),
     secondaryTextColor  = Color(0xFFCCCCCC),
     thirdTextColor      = Color(0xFF666666),
-    tagColor            = Color(0x33FFD700),
-    tagTextColor        = Color(0xFFFFD700),
+    tagColor            = Color(0x332196F3),
+    tagTextColor        = Color(0xFF2196F3)
 )
 
 val LocalColorProvider = staticCompositionLocalOf { palette }

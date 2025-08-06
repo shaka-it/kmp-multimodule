@@ -55,7 +55,7 @@ fun ProfileScreen(
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
-            text = "${state.name} ${state.surname}",
+            text = state.login,
             fontSize = 20.sp,
             fontWeight = FontWeight.Medium,
             color = colors.primaryTextColor

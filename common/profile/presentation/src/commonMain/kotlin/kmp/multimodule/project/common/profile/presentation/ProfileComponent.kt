@@ -8,8 +8,7 @@ interface ProfileComponent {
     fun onLogoutClicked()
 
     data class ViewState(
-        val name: String = "",
-        val surname: String = "",
+        val login: String = "",
         val imageUrl: String = "",
     )
 

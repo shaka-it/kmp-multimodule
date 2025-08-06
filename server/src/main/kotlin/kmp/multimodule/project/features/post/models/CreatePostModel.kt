@@ -6,7 +6,6 @@ import kotlinx.serialization.Serializable
 data class CreatePostRequest(
     val title: String,
     val description: String,
-    val author: String,
 )
 
 @Serializable

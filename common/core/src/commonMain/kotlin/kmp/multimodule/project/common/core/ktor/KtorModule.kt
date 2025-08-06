@@ -38,7 +38,7 @@ internal val ktorModule = module {
             }
 
             defaultRequest {
-                url("http://domain:host")
+                url("http://10.0.2.2:8080")
                 header("Content-Type", "application/json; charset=UTF-8")
             }
         }

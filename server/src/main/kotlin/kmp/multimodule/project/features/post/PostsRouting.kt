@@ -9,11 +9,11 @@ fun Application.configurePostsRouting() {
 
     routing {
         post("/posts/create") {
-            PostsController(call).createGame()
+            PostsController(call).createPost()
         }
 
-        get("/posts/search") {
-            PostsController(call).performSearch()
+        get("/posts") {
+            PostsController(call).fetchPosts()
         }
     }
 }

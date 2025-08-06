@@ -5,10 +5,10 @@ import com.arkivanov.decompose.value.MutableValue
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.lifecycle.coroutines.coroutineScope
 import kmp.multimodule.project.common.core.presentation.utils.tryToUpdate
+import kmp.multimodule.project.common.posts.api.models.Post
+import kmp.multimodule.project.common.posts.api.repository.PostsRepository
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
-import models.Post
-import repository.PostsRepository
 import kotlin.coroutines.CoroutineContext
 
 class RealMakePostComponent(
@@ -39,18 +39,20 @@ class RealMakePostComponent(
         if (title.isEmpty() || description.isEmpty()) return
 
         scope.launch {
-            postsRepository.createPost(
-                post = Post(
-                    title = title,
-                    description = description,
+            try {
+                postsRepository.createPost(
+                    post = Post(
+                        title = title,
+                        description = description,
+                    )
                 )
-            )
-            viewState.tryToUpdate {
-                it.copy(
-                    title = "",
-                    description = "",
-                )
-            }
+                viewState.tryToUpdate {
+                    it.copy(
+                        title = "",
+                        description = "",
+                    )
+                }
+            } catch (_: Throwable) { }
         }
     }
 }

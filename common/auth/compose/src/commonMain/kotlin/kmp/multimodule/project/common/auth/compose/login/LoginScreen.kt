@@ -52,9 +52,9 @@ fun LoginScreen(
         Spacer(modifier = Modifier.height(24.dp))
 
         ThemedTextField(
-            value = state.email,
-            onValueChange = component::onEmailChanged,
-            label = "Email",
+            value = state.login,
+            onValueChange = component::onLoginChanged,
+            label = "Login",
             modifier = Modifier.fillMaxWidth()
         )
 

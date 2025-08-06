@@ -7,7 +7,7 @@ class FakeLoginComponent : LoginComponent {
     override val viewState: Value<LoginComponent.ViewState>
         get() = MutableValue(LoginComponent.ViewState())
 
-    override fun onEmailChanged(value: String) = Unit
+    override fun onLoginChanged(value: String) = Unit
 
     override fun onPasswordChanged(value: String) = Unit
 

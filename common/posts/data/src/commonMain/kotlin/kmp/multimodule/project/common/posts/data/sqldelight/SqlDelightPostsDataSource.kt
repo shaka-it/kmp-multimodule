@@ -6,9 +6,8 @@ import kmp.multimodule.project.common.core.database.DbDriverFactory
 import kmp.multimodule.project.db.AppDatabase
 import kmp.multimodule.project.db.AppDatabaseQueries
 import kmp.multimodule.project.db.PostEntity
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import models.Post
+import kmp.multimodule.project.common.posts.api.models.Post
 import kotlin.coroutines.CoroutineContext
 
 internal class SqlDelightPostsDataSource(
@@ -23,7 +22,16 @@ internal class SqlDelightPostsDataSource(
     }
 
     suspend fun createPost(post: Post) {
-        getQueries().insert(title = post.title, description = post.description)
+        getQueries().insert(
+            id = post.id,
+            title = post.title,
+            description = post.description,
+            author = post.author,
+        )
+    }
+
+    suspend fun clearAllPosts() {
+        getQueries().deleteAll()
     }
 
     private suspend fun getQueries(): AppDatabaseQueries {

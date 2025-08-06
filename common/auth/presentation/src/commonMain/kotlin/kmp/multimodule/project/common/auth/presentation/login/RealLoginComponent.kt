@@ -23,9 +23,9 @@ internal class RealLoginComponent(
     private val scope = coroutineScope(mainContext + SupervisorJob())
     override val viewState: Value<ViewState> = MutableValue(ViewState())
 
-    override fun onEmailChanged(value: String) {
+    override fun onLoginChanged(value: String) {
         viewState.tryToUpdate {
-            it.copy(email = value)
+            it.copy(login = value)
         }
     }
 
@@ -48,12 +48,12 @@ internal class RealLoginComponent(
         scope.launch {
             try {
                 val response = authRepository.login(
-                        login = viewState.value.email,
-                        password = viewState.value.password,
-                    )
+                    login = viewState.value.login,
+                    password = viewState.value.password,
+                )
                 if (response.token.isNotBlank()) {
                     viewState.tryToUpdate {
-                        it.copy(email = "", password = "", isSending = false)
+                        it.copy(login = "", password = "", isSending = false)
                     }
                     onNavEvent(LoginComponent.NavEvent.OpenMainFlow)
                 } else {
@@ -61,13 +61,12 @@ internal class RealLoginComponent(
                         it.copy(isSending = false)
                     }
                 }
-            } catch (e: Exception) {
+            } catch (_: Throwable) {
                 viewState.tryToUpdate {
                     it.copy(isSending = false)
                 }
             }
         }
-        onNavEvent(LoginComponent.NavEvent.OpenMainFlow)
     }
 
     override fun onRegisterClick() {

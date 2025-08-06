@@ -7,12 +7,13 @@ import io.ktor.server.response.respond
 import kmp.multimodule.project.database.posts.Posts
 import kmp.multimodule.project.database.posts.mapToCreatePostResponse
 import kmp.multimodule.project.database.posts.mapToPostDto
+import kmp.multimodule.project.database.tokens.Tokens
 import kmp.multimodule.project.features.post.models.CreatePostRequest
 import kmp.multimodule.project.utils.TokenCheck
 
 class PostsController(private val call: ApplicationCall) {
 
-    suspend fun performSearch() {
+    suspend fun fetchPosts() {
         val token = call.request.headers["Bearer-Authorization"]
 
         if (TokenCheck.isTokenValid(token.orEmpty())) {
@@ -22,13 +23,15 @@ class PostsController(private val call: ApplicationCall) {
         }
     }
 
-    suspend fun createGame() {
+    suspend fun createPost() {
         val token = call.request.headers["Bearer-Authorization"]
         if (TokenCheck.isTokenValid(token.orEmpty())) {
             val request = call.receive<CreatePostRequest>()
-            val game = request.mapToPostDto()
-            Posts.insert(game)
-            call.respond(game.mapToCreatePostResponse())
+            val post = request.mapToPostDto(
+                author = Tokens.fetchTokenDtoByToken(tokenValue = token.orEmpty())?.login.orEmpty(),
+            )
+            Posts.insert(post)
+            call.respond(post.mapToCreatePostResponse())
         } else {
             call.respond(HttpStatusCode.Unauthorized, "Token expired")
         }

@@ -15,7 +15,16 @@ class SettingsAuthDataSource(
         return settings[tokenKey, ""]
     }
 
+    fun saveLogin(login: String) {
+        settings.putString(loginKey, login)
+    }
+
+    fun fetchLogin(): String {
+        return settings[loginKey, ""]
+    }
+
     companion object {
         private val tokenKey = "tokenKey"
+        private val loginKey = "login"
     }
 }

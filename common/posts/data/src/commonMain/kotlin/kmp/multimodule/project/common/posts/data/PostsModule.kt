@@ -1,15 +1,16 @@
 package kmp.multimodule.project.common.posts.data
 
-import kmp.multimodule.project.common.posts.data.mapper.PostEntityMapper
+import kmp.multimodule.project.common.posts.api.repository.PostsRepository
+import kmp.multimodule.project.common.posts.data.ktor.KtorPostsDataSource
+import kmp.multimodule.project.common.posts.data.mapper.PostMapper
 import kmp.multimodule.project.common.posts.data.repository.DefaultPostsRepository
 import kmp.multimodule.project.common.posts.data.sqldelight.SqlDelightPostsDataSource
 import kotlinx.coroutines.Dispatchers
 import org.koin.dsl.module
-import repository.PostsRepository
 
 val postsDataModule = module {
     factory {
-        PostEntityMapper()
+        PostMapper()
     }
     single {
         SqlDelightPostsDataSource(
@@ -17,10 +18,17 @@ val postsDataModule = module {
             coroutineContext = Dispatchers.Default,
         )
     }
+    single {
+        KtorPostsDataSource(
+            httpClient = get(),
+            authRepository = get(),
+        )
+    }
     single<PostsRepository> {
         DefaultPostsRepository(
             localDataSource = get(),
-            postEntityMapper = get(),
+            postMapper = get(),
+            remoteDataSource = get(),
             coroutineContext = Dispatchers.Default,
         )
     }

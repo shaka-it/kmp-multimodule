@@ -1,15 +1,24 @@
 package kmp.multimodule.project.common.posts.compose.posts
 
-import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.pullrefresh.PullRefreshIndicator
+import androidx.compose.material.pullrefresh.pullRefresh
+import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -18,30 +27,55 @@ import kmp.multimodule.project.common.core.compose.theme.AppTheme
 import kmp.multimodule.project.common.core.compose.theme.Theme.colors
 import kmp.multimodule.project.common.posts.presentation.posts.FakePostsComponent
 import kmp.multimodule.project.common.posts.presentation.posts.PostsComponent
+import kotlinx.coroutines.launch
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun PostsScreen(
     component: PostsComponent,
     modifier: Modifier = Modifier
 ) {
     val state by component.viewState.subscribeAsState()
+    val scope = rememberCoroutineScope()
+    var isRefreshing by remember { mutableStateOf(false) }
 
-    LazyColumn(
+    val pullRefreshState = rememberPullRefreshState(
+        refreshing = isRefreshing,
+        onRefresh = {
+            scope.launch {
+                isRefreshing = true
+                component.onRefreshPosts()
+                isRefreshing = false
+            }
+        }
+    )
+
+    Box(
         modifier = modifier
             .fillMaxSize()
-            .background(colors.primaryBackground)
-            .padding(horizontal = 16.dp, vertical = 8.dp)
+            .pullRefresh(pullRefreshState)
     ) {
-        items(state.posts) { post ->
-            PostItem(
-                title = post.title,
-                description = post.description,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 8.dp)
-            )
+        LazyColumn(
+            modifier = Modifier.fillMaxSize()
+        ) {
+            items(state.posts) { post ->
+                PostItem(
+                    title = post.title,
+                    description = post.description,
+                    author = post.author,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 8.dp)
+                )
+            }
         }
+
+        PullRefreshIndicator(
+            refreshing = isRefreshing,
+            state = pullRefreshState,
+            modifier = Modifier.align(Alignment.TopCenter)
+        )
     }
 }
 
@@ -49,9 +83,10 @@ fun PostsScreen(
 private fun PostItem(
     title: String,
     description: String,
+    author: String,
     modifier: Modifier = Modifier
 ) {
-    Column(modifier = modifier) {
+    Column(modifier = modifier.padding(16.dp)) {
         Text(
             text = title,
             fontSize = 18.sp,
@@ -63,12 +98,18 @@ private fun PostItem(
             color = colors.secondaryTextColor,
             modifier = Modifier.padding(top = 4.dp)
         )
+        Text(
+            text = author,
+            fontSize = 12.sp,
+            color = colors.thirdTextColor,
+            modifier = Modifier.padding(top = 4.dp)
+        )
     }
 }
 
 @Preview
 @Composable
-private fun MakePostsScreenPreview() {
+private fun PostsScreenPreview() {
     AppTheme {
         PostsScreen(FakePostsComponent())
     }

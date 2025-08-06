@@ -5,7 +5,7 @@ import com.arkivanov.decompose.value.Value
 interface LoginComponent {
     val viewState: Value<ViewState>
 
-    fun onEmailChanged(value: String)
+    fun onLoginChanged(value: String)
     fun onPasswordChanged(value: String)
     fun onPasswordShowClick()
     fun onLoginClick()
@@ -13,7 +13,7 @@ interface LoginComponent {
     fun onForgotClick()
 
     data class ViewState(
-        val email: String = "",
+        val login: String = "",
         val password: String = "",
         val isSending: Boolean = false,
         val isPasswordHidden: Boolean = true

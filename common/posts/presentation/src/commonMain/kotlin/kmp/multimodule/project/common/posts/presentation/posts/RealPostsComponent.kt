@@ -5,11 +5,11 @@ import com.arkivanov.decompose.value.MutableValue
 import com.arkivanov.decompose.value.Value
 import com.arkivanov.essenty.lifecycle.coroutines.coroutineScope
 import kmp.multimodule.project.common.core.presentation.utils.tryToUpdate
+import kmp.multimodule.project.common.posts.api.repository.PostsRepository
 import kmp.multimodule.project.common.posts.presentation.mapper.PostDvoMapper
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-import repository.PostsRepository
 import kotlin.coroutines.CoroutineContext
 
 class RealPostsComponent(
@@ -24,20 +24,31 @@ class RealPostsComponent(
         MutableValue(PostsComponent.ViewState())
 
     init {
-        getPosts()
+        observePosts()
+        onRefreshPosts()
     }
 
-    fun getPosts() {
+    override fun onRefreshPosts() {
         scope.launch {
-            postsRepository.fetchAllPosts()
-                .map {
-                    it.map(postDvoMapper::toPostDvo)
-                }
-                .collect { postList ->
-                    viewState.tryToUpdate {
-                        it.copy(posts = postList)
+            try {
+                postsRepository.refreshPosts()
+            } catch (_: Throwable) { }
+        }
+    }
+
+    fun observePosts() {
+        scope.launch {
+            try {
+                postsRepository.observePosts()
+                    .map {
+                        it.map(postDvoMapper::toPostDvo)
                     }
-                }
+                    .collect { postList ->
+                        viewState.tryToUpdate {
+                            it.copy(posts = postList)
+                        }
+                    }
+            } catch (_: Throwable) { }
         }
     }
 }

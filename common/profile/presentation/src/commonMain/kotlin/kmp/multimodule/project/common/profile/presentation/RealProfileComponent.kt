@@ -16,8 +16,7 @@ class RealProfileComponent(
     override val viewState: Value<ProfileComponent.ViewState> =
         MutableValue(
             ProfileComponent.ViewState(
-                name = "Shakarim",
-                surname = "Bazhenov",
+                login = authRepository.getLogin(),
                 imageUrl = "https://i.pinimg.com/736x/57/00/c0/5700c04197ee9a4372a35ef16eb78f4e.jpg",
             )
         )

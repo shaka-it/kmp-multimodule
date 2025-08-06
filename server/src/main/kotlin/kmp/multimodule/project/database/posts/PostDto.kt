@@ -13,7 +13,9 @@ data class PostDto(
     val author: String,
 )
 
-fun CreatePostRequest.mapToPostDto(): PostDto =
+fun CreatePostRequest.mapToPostDto(
+    author: String,
+): PostDto =
     PostDto(
         postId = UUID.randomUUID().toString(),
         title = title,

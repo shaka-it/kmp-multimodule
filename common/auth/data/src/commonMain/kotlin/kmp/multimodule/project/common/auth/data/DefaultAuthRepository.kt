@@ -8,7 +8,7 @@ import kmp.multimodule.project.common.auth.data.ktor.KtorAuthRemoteDataSource
 import kmp.multimodule.project.common.auth.data.ktor.KtorLoginRequest
 import kmp.multimodule.project.common.auth.data.settings.SettingsAuthDataSource
 
-class AuthRepositoryImpl(
+class DefaultAuthRepository(
     private val remoteDataSource: KtorAuthRemoteDataSource,
     private val cacheDataSource: SettingsAuthDataSource,
 ) : AuthRepository {
@@ -22,6 +22,7 @@ class AuthRepositoryImpl(
                 )
             )
 
+            cacheDataSource.saveLogin(login)
             cacheDataSource.saveToken(token.token)
             token
         }
@@ -31,6 +32,15 @@ class AuthRepositoryImpl(
     }
 
     override fun logout() {
+        cacheDataSource.saveLogin("")
         cacheDataSource.saveToken("")
+    }
+
+    override fun getToken(): String {
+        return cacheDataSource.fetchToken()
+    }
+
+    override fun getLogin(): String {
+        return cacheDataSource.fetchLogin()
     }
 }

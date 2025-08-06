@@ -2,6 +2,7 @@ package kmp.multimodule.project.database.tokens
 
 import org.jetbrains.exposed.sql.Table
 import org.jetbrains.exposed.sql.insert
+import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.selectAll
 import org.jetbrains.exposed.sql.transactions.transaction
 
@@ -34,6 +35,25 @@ object Tokens : Table() {
             }
         } catch (e: Exception) {
             emptyList()
+        }
+    }
+
+    fun fetchTokenDtoByToken(tokenValue: String): TokenDto? {
+        return try {
+            transaction {
+                Tokens
+                    .select { token eq tokenValue }
+                    .map { row ->
+                        TokenDto(
+                            rowId = row[Tokens.id],
+                            token = row[token],
+                            login = row[login]
+                        )
+                    }
+                    .singleOrNull()
+            }
+        } catch (e: Exception) {
+            null
         }
     }
 }
