@@ -7,6 +7,7 @@ plugins {
 
 group = "kmp.multimodule.project"
 version = "1.0.0"
+
 application {
     mainClass.set("kmp.multimodule.project.ApplicationKt")
 

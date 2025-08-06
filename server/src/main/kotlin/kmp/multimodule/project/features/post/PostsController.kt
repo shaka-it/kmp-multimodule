@@ -8,23 +8,15 @@ import kmp.multimodule.project.database.posts.Posts
 import kmp.multimodule.project.database.posts.mapToCreatePostResponse
 import kmp.multimodule.project.database.posts.mapToPostDto
 import kmp.multimodule.project.features.post.models.CreatePostRequest
-import kmp.multimodule.project.features.post.models.FetchPostsRequest
 import kmp.multimodule.project.utils.TokenCheck
 
 class PostsController(private val call: ApplicationCall) {
 
     suspend fun performSearch() {
-        val request = call.receive<FetchPostsRequest>()
         val token = call.request.headers["Bearer-Authorization"]
 
         if (TokenCheck.isTokenValid(token.orEmpty())) {
-            if (request.searchQuery.isBlank()) {
-                call.respond(Posts.fetchAll())
-            } else {
-                call.respond(
-                    Posts.fetchAll()
-                        .filter { it.title.contains(request.searchQuery, ignoreCase = true) })
-            }
+            call.respond(Posts.fetchAll())
         } else {
             call.respond(HttpStatusCode.Unauthorized, "Token expired")
         }
