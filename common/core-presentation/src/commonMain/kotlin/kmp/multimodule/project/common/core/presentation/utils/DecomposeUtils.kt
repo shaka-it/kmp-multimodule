@@ -11,7 +11,7 @@ fun <T : Any> Value<T>.tryToUpdate(function: (T) -> T) {
 }
 
 /**
- * Creates a [ChildStack] with a single active component. Should be used to create a stack for Jetpack Compose preview.
+ * Creates a [ChildStack] with a single active component, should be used to create a stack for Jetpack Compose preview
  */
 fun <T : Any> createFakeChildStack(instance: T): ChildStack<*, T> {
     return ChildStack(
