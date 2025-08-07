@@ -30,7 +30,6 @@ dependencies {
     implementation(libs.exposed.jdbc)
 
     implementation(libs.postgresql)
-    implementation(libs.hikari)
 }
 
 tasks {
