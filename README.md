@@ -7,12 +7,6 @@ A fully modular Kotlin Multiplatform (KMP) project showcasing:
 - **Modular, feature-based architecture** with layered modules (api, data, presentation, compose)
 - **Navigation** via Decompose and **Dependency Injection** via Koin
 
-<img width="780" height="564" alt="Снимок экрана 2025-08-07 в 15 49 22" src="https://github.com/user-attachments/assets/ded16a25-3e9d-4d96-9916-ce3a8835a7f9" />
-<img width="718" height="685" alt="Снимок экрана 2025-08-07 в 15 50 40" src="https://github.com/user-attachments/assets/d5010e14-384f-4af6-a464-8e34655ad976" />
-<img width="426" height="908" alt="Снимок экрана 2025-08-07 в 15 49 53" src="https://github.com/user-attachments/assets/e2e32546-5f66-4417-b4d4-81230a4f84a9" />
-<img width="375" height="750" alt="Снимок экрана 2025-08-07 в 15 51 20" src="https://github.com/user-attachments/assets/000a4d76-4efe-4039-9f1a-e513e2cb136f" />
-<img width="382" height="767" alt="Снимок экрана 2025-08-07 в 15 51 24" src="https://github.com/user-attachments/assets/df01992f-6d9e-4752-8247-991bb8fbd3f5" />
-
 ---
 
 ## Table of Contents
@@ -90,3 +84,13 @@ User flows, data access, UI and navigation are all implemented in Kotlin, maximi
 - **Networking:** Ktor client & server
 - **Database:** SQLDelight (local), Exposed + PostgreSQL (server)
 - **Build:** Gradle, custom convention plugins
+
+---
+
+## 📸 UX
+
+<img width="780" height="564" alt="Снимок экрана 2025-08-07 в 15 49 22" src="https://github.com/user-attachments/assets/ded16a25-3e9d-4d96-9916-ce3a8835a7f9" />
+<img width="718" height="685" alt="Снимок экрана 2025-08-07 в 15 50 40" src="https://github.com/user-attachments/assets/d5010e14-384f-4af6-a464-8e34655ad976" />
+<img width="426" height="908" alt="Снимок экрана 2025-08-07 в 15 49 53" src="https://github.com/user-attachments/assets/e2e32546-5f66-4417-b4d4-81230a4f84a9" />
+<img width="375" height="750" alt="Снимок экрана 2025-08-07 в 15 51 20" src="https://github.com/user-attachments/assets/000a4d76-4efe-4039-9f1a-e513e2cb136f" />
+<img width="382" height="767" alt="Снимок экрана 2025-08-07 в 15 51 24" src="https://github.com/user-attachments/assets/df01992f-6d9e-4752-8247-991bb8fbd3f5" />
